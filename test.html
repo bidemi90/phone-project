@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .contactapp {
+            height: 800px;
+            width: 400px;
+            position: relative;
+        }
+        
+        .nameappcotact {
+            background-color: rgb(49, 43, 70);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-transform: uppercase;
+            height: 5%;
+
+        }
+
+        .allcontacts {
+            height: 95%;
+            background-color: rgb(102, 63, 245);
+        }
+
+        .onecotactincotactapp {
+            width: 100%;
+            height: fit-content;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.273);
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .onecotactincotactapp img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50px;
+        }
+
+        .onecotactincotactapp div {
+            width: 70%;
+            height: fit-content;
+            color: white;
+        }
+
+        .addtocontactdiv {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .addtocontactdiv button {
+            width: 50px;
+            padding: 10px;
+            border-radius: 50px;
+            color: white;
+            background-color: rgb(49, 43, 70);
+            border: none;
+        }
+
+        .addtocontactdiv button:hover {
+            width: 50px;
+            padding: 10px;
+            border-radius: 50px;
+            color: rgb(49, 43, 70);
+            background-color: rgb(102, 63, 245);
+            border: none;
+            border: 2px solid rgb(49, 43, 70);
+        }
+
+        .divtoeditonecotact {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(102, 63, 245);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            position: relative;
+        }
+
+        .headerofoneeditincontact {
+            position: absolute;
+            top: 0;
+            background-color: rgb(49, 43, 70);
+            width: 100%;
+            height: 40px;
+            font-size: 20px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+        }
+
+        .imgofeditincontact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .showimg {
+            width: 100px;
+            height: 100px;
+            border: none;
+            border-radius: 50px;
+        }
+
+        .inputimg {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: none;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+            background-color: rgb(49, 43, 70);
+            margin: 20px;
+            color: white;
+            border-radius: 10px;
+            font-weight: bold;
+
+        }
+
+        .inputsdivincontactedit {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inputsdivincontactedit input {
+            width: 200px;
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            margin: 10px;
+            background-color: rgb(49, 43, 70);
+            color: white;
+        }
+
+        .butdivincontactedit {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .butdivincontactedit button {
+            margin: 10px;
+            width: 100px;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 20px;
+            color: white;
+            background-color: rgb(49, 43, 70);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="contactapp" id="contactapp">
+        <div class="nameappcotact">
+            contacts
+        </div>
+        <div class="allcontacts" id="allcontacts">
+
+        </div>
+        <div class="addtocontactdiv" id="addtocontactdiv">
+            <button onclick="addtocontact()">
+                <span class="material-symbols-outlined">
+                    add_circle
+                </span>
+            </button>
+        </div>
+
+    </section>
+
+</body>
+
+</html>
+<script>
+    let contactarray = [
+        {
+            Image: `images/facebook.png`,
+            name: "Mr dan",
+            phonenumber: "08012345678"
+        },
+        {
+            Image: `images/facebook.png`,
+            name: "Usman SQI",
+            phonenumber: "08012345678"
+        },
+        {
+            Image: `images/facebook.png`,
+            name: "ABS",
+            phonenumber: "08012345678"
+        },
+
+    ]
+    for (let index = 0; index < contactarray.length; index++) {
+        const element = contactarray[index];
+        document.getElementById("allcontacts").innerHTML += `
+        
+        <div class="onecotactincotactapp" id="onecotactincotactapp" onclick="editonecontactincontactapp(${index})">
+        <img src="${element.Image}" alt="">
+        <div>
+            <p>${element.name}</p>
+            <p>${element.phonenumber}</p>
+        </div>
+    </div>
+
+        `
+    }
+    function editonecontactincontactapp(i) {
+
+        console.log(contactarray[i]);
+
+
+        document.getElementById("allcontacts").innerHTML = ""
+
+        document.getElementById("allcontacts").innerHTML += `
+        
+            <div class="divtoeditonecotact" id="divtoeditonecotact">
+        <div class="headerofoneeditincontact">
+            edit contact
+        </div>
+        <div class="imgofeditincontact">
+            <img class="showimg" id="showimg" src="${contactarray[i].Image}" alt="">
+
+            <label class="custom-file-upload" onclick="">
+                <input onchange="pickfile(event)" class="inputimg" id="inputimg" type="file" name="" id="">
+                Choose File
+            </label>
+        </div>
+        <div class="inputsdivincontactedit">
+            <input type="text" id="contactname" placeholder="Name" value="${contactarray[i].name}">
+            <input type="number" id="contactphonenumber" placeholder="phone number" value="${contactarray[i].phonenumber}">
+        </div>
+        <div class="butdivincontactedit">
+            <button onclick="subnewcontacttoarray()">
+                submit
+            </button>
+            <button onclick="deleteoncontactincontactapp(${i})">
+                delete
+            </button>
+            <button onclick="cancontact()">
+                cancle
+            </button>
+        </div>
+    </div>
+
+        `
+
+        document.getElementById("addtocontactdiv").style.display = "none"
+
+
+
+
+    }
+
+
+    let reader = new FileReader()
+    let newimgofcontact = ""
+    function pickfile(ev) {
+        let file = ev.target.files[0]
+        console.log(file);
+        reader.onload = (file) => {
+            newimgofcontact = reader.result
+            document.getElementById("showimg").src = reader.result
+            // reader.readAsDataURL(file)
+        }
+
+        if (file) {
+            let data = reader.readAsDataURL(file);
+        }
+    }
+
+    function subnewcontacttoarray() {
+        let newcontactdet =
+        {
+            Image: document.getElementById("showimg").src,
+            name: document.getElementById("contactname").value,
+            phonenumber: document.getElementById("contactphonenumber").value
+        }
+        console.log(newcontactdet);
+        let found = contactarray.find((current) => current.name == document.getElementById("contactname").value && current.phonenumber == document.getElementById("contactphonenumber").value);
+
+        if (found) {
+            alert("contact already saved before")
+
+        } else {
+            contactarray.push(newcontactdet)
+
+        }
+    }
+    function deleteoncontactincontactapp(i) {
+        contactarray.splice(i, 1)
+
+    }
+    function cancontact() {
+
+    }
+    function addtocontact() {
+
+
+
+        document.getElementById("allcontacts").innerHTML = ""
+
+        document.getElementById("allcontacts").innerHTML += `
+
+    <div class="divtoeditonecotact" id="divtoeditonecotact">
+<div class="headerofoneeditincontact">
+    save new contact
+</div>
+<div class="imgofeditincontact">
+    <img class="showimg" id="showimg" src="" alt="">
+
+    <label class="custom-file-upload" onclick="">
+        <input onchange="pickfile(event)" class="inputimg" id="inputimg" type="file" name="" id="">
+        Choose File
+    </label>
+</div>
+<div class="inputsdivincontactedit">
+    <input type="text" id="contactname" placeholder="Name" value="">
+    <input type="number" id="contactphonenumber" placeholder="phone number" value="">
+</div>
+<div class="butdivincontactedit">
+    <button onclick="addsubnewcontacttoarray()">
+        submit
+    </button>
+    
+    <button onclick="cancontact()">
+        cancle
+    </button>
+</div>
+</div>
+
+`
+
+        document.getElementById("addtocontactdiv").style.display = "none"
+
+
+
+    }
+
+    function addsubnewcontacttoarray() {
+       if (document.getElementById("contactphonenumber").value=="" || document.getElementById("contactname").value=="") {
+        alert("enter name and phone number")
+       } else {
+
+        let newcontactdet =
+        {
+            Image: document.getElementById("showimg").src,
+            name: document.getElementById("contactname").value,
+            phonenumber: document.getElementById("contactphonenumber").value
+        }
+        console.log(newcontactdet);
+        let found = contactarray.find((current) =>  current.name == document.getElementById("contactname").value && current.phonenumber == document.getElementById("contactphonenumber").value);
+
+        if (found) {
+            alert("contact already saved before")
+
+        } else {
+            contactarray.push(newcontactdet)
+
+        }
+       }
+    }
+</script>

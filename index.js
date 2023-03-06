@@ -9,16 +9,13 @@ function defaulthome() {
 
                                                     </div>
                                                     <div class="footermenu">
-                                                        <button onclick="phoneinmain()" class="phone">
-                                                        </button>
+                                                       
                                                         <button class="home" onclick="home()">
                                                             <span class="material-symbols-outlined">
                                                                 home
                                                             </span>
                                                         </button>
-                                                        <button class="camera" onclick="camera()">
-
-                                                        </button>
+                                                        
 
                                                     </div>
                                                 </section>
@@ -64,7 +61,7 @@ function nav() {
     setInterval(() => {
         let it = new Date()
         document.getElementById("nav").innerHTML = `<div>
-                                                 MTN - AIRTEL
+                                                 MTN
                                                 </div>
                                                 <div> 
                                                 <span class="material-symbols-outlined">
@@ -176,10 +173,6 @@ function home() {
 
 
 
-
-
-
-
 function backtohome() {
     home()
 }
@@ -190,7 +183,7 @@ function phone() {
     <section class="phoneapp">
     <div class="displayforphoneapp" id="displayforphoneapp">
         <div class="searchinphonediv">
-            <input type="text" class="searchinphone" id="searchinphone" placeholder="search">
+            <input type="text" onkeypress="searchfromcontact()" class="searchinphone" id="searchinphone" placeholder="search">
         </div>
         <div class="divforconandhisbut" id="divforconandhisbut">
             <button onclick="showhis()">
@@ -327,19 +320,178 @@ let historyarray = [
 
 ]
 
-
+let usermtnbalance = 0
 function dialkey() {
+    document.getElementById("foot").innerHTML = `
+    
+    <button onclick="phone()">
+        <span class="material-symbols-outlined">play_arrow</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">check_box_outline_blank</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">radio_button_unchecked</span>
+    </button>
+
+`
     let numb = document.getElementById("showtypinginphoneinput").value
     console.log(numb);
-    if (numb.length == 11) {
-        if (numb.includes("#") || numb.includes("*")) {
-            console.log("no");
-        }
 
-        if (numb.includes("#") || numb.includes("*")) {
-            console.log("no");
+    if (numb == "*556#") {
+        document.getElementById("showtypinginphone").style.display = "none"
+        document.getElementById("keypaddisplay").style.display = "none"
+        document.getElementById("dial").style.display = "none"
+        document.getElementById("displayhisandcontast").innerHTML += `
+<div class="choosesim" id="choosesim">
+your  account balance is ${usermtnbalance}#
+<button onclick="phone()">ok</button>
+</div>`
+    } else if (numb.length == 11) {
+        let checkit = `${numb[0]}${numb[1]}${numb[2]}`
+
+        if (checkit == "090" || checkit == "080" || checkit == "070" || checkit == "091" || checkit == "081") {
+            console.log("good");
+
+            let found = contactarray.findIndex((current) => current.phonenumber == numb)
+            if (found >= 0) {
+                call(found)
+            } else {
+
+
+                historyarray.push(
+                    {
+                        Image: "",
+                        name: "Unkown",
+                        phonenumber: numb
+                    }
+                )
+
+                console.log(historyarray);
+                document.getElementById("displayforphoneapp").innerHTML +=
+                    `
+           <div class="whencalling" id="whencalling">
+                   <img src="" alt="">
+                   <div>
+                       <p>Unkown</p>
+                       <p>${numb}</p>
+                   </div>
+                   <div class="holdingbut">
+                       <button>
+                           <span class="material-symbols-outlined">
+                               keyboard_alt
+                               </span>
+                       </button>
+                       <button>
+                           <span class="material-symbols-outlined">
+                               phone_paused
+                               </span>
+                       </button>
+                       <button>
+                           <span class="material-symbols-outlined">
+                               volume_up
+                               </span>
+                       </button>
+                   </div>
+                   <audio controls autoplay loop src="audio/mixkit-sport-start-bleeps-918.wav"></audio>
+                   <button onclick="cancletheongoingcallcall()">
+                       <span class="material-symbols-outlined">
+                           call_end
+                           </span>
+                   </button>
+               </div>
+           `
+
+                setTimeout(() => {
+                    phone()
+                    showhis()
+                }, 5000);
+
+
+
+            }
+
+
+        } else {
+            document.getElementById("showtypinginphone").style.display = "none"
+        document.getElementById("keypaddisplay").style.display = "none"
+        document.getElementById("dial").style.display = "none"
+        document.getElementById("displayhisandcontast").innerHTML += `
+<div class="choosesim" id="choosesim">
+invalid code
+<button onclick="phone()">ok</button>
+</div>`
         }
     }
+    else if (numb.length == 18 && numb.includes("#") && numb.includes("*")) {
+
+        let checkit = `${numb[0]}${numb[1]}${numb[2]}${numb[3]}${numb[4]}`
+
+        let thecard = `${numb[5]}${numb[6]}${numb[7]}${numb[8]}${numb[9]}${numb[10]}${numb[11]}${numb[12]}${numb[13]}${numb[14]}${numb[15]}${numb[16]}`
+        console.log(checkit);
+        console.log(thecard);
+        if (checkit == "*555*") {
+            let checkcard = MTN.find((current) => current.card == thecard)
+            if (checkcard) {
+                let inusednetwork = usednetwork.find((looking) => looking == checkcard.card)
+                if (!inusednetwork) {
+                    usednetwork.push(checkcard.card)
+                    usermtnbalance = eval(usermtnbalance + Number(checkcard.amount))
+                    document.getElementById("showtypinginphone").style.display = "none"
+                    document.getElementById("keypaddisplay").style.display = "none"
+                    document.getElementById("dial").style.display = "none"
+                    document.getElementById("displayhisandcontast").innerHTML += `
+                    <div class="choosesim" id="choosesim">
+                    recharge successful your balance is ${usermtnbalance}#
+                    <button onclick="phone()">ok</button>
+                </div>
+                  `}
+                if (inusednetwork) {
+                    document.getElementById("showtypinginphone").style.display = "none"
+                    document.getElementById("keypaddisplay").style.display = "none"
+                    document.getElementById("dial").style.display = "none"
+                    document.getElementById("displayhisandcontast").innerHTML = `
+        <div class="choosesim" id="choosesim">
+        recharge as already been used
+        <button onclick="phone()">ok</button>
+    </div>
+      `
+                }
+
+            }
+            else {
+                document.getElementById("showtypinginphone").style.display = "none"
+                document.getElementById("keypaddisplay").style.display = "none"
+                document.getElementById("dial").style.display = "none"
+                document.getElementById("displayhisandcontast").innerHTML += `
+        <div class="choosesim" id="choosesim">
+        invalid code
+        <button onclick="phone()">ok</button>
+    </div>
+      `
+            }
+        }
+        console.log(usermtnbalance);
+    }
+    else {
+        document.getElementById("showtypinginphone").style.display = "none"
+        document.getElementById("keypaddisplay").style.display = "none"
+        document.getElementById("dial").style.display = "none"
+        document.getElementById("displayhisandcontast").innerHTML += `
+<div class="choosesim" id="choosesim">
+invalid code
+<button onclick="phone()">ok</button>
+</div>`  
+    }
+
+
+
+
+}
+
+function choosesim(sim) {
+
+
 }
 
 
@@ -400,6 +552,39 @@ function showcon() {
     }
 
 }
+
+function searchfromcontact() {
+    
+    document.getElementById("showtypinginphoneinput").value = ""
+    document.getElementById("showtypinginphone").style.display = "none"
+    document.getElementById("keypaddisplay").style.display = "none"
+    document.getElementById("dial").style.display = "none"
+    document.getElementById("dialo").style.display = "flex"
+
+
+    document.getElementById("displayhisandcontast").innerHTML = ""
+    for (let index = 0; index < contactarray.length; index++) {
+        const element = contactarray[index];
+
+        if (element.name.includes(document.getElementById("searchinphone").value) ) {
+            document.getElementById("displayhisandcontast").innerHTML +=
+            `
+        <div class="onecontactorhistory" onclick="onehistory(${index})">
+        <img src="${element.Image}" alt="">
+        <div>
+            <p>${element.name}</p>
+            <p>${element.phonenumber}</p>
+        </div>
+    </div>
+        `
+        } else {
+           
+        }
+
+    }
+
+}
+
 function onehistory(init) {
     document.getElementById("showtypinginphoneinput").value = ""
     document.getElementById("showtypinginphone").style.display = "none"
@@ -431,7 +616,7 @@ function onehistory(init) {
 cancel
 </span>
             </button>
-            <button onclick="sendmessage()">
+            <button onclick="sendmessagehis(${init})">
                 <span class="material-symbols-outlined">
                     send
                 </span>
@@ -473,7 +658,7 @@ function onecontact(init) {
 cancel
 </span>
     </button>
-    <button onclick="sendmessage()">
+    <button onclick="sendmessagecon(${init})">
         <span class="material-symbols-outlined">
             send
         </span>
@@ -483,6 +668,14 @@ cancel
 
 `
 
+}
+function sendmessagecon(index) {
+    message()
+    addintomessage(index)
+}
+function sendmessagehis(index) {
+    message()
+    addintomessagehis(index)
 }
 function cancleit() {
     document.getElementById("showtypinginphoneinput").value = ""
@@ -941,6 +1134,7 @@ let photoarray = [
 function theimg(theimg) {
     console.log(theimg);
     console.log(photoarray[theimg]);
+    document.getElementById("photoapp").innerHTML = ""
     document.getElementById("photoapp").innerHTML += `
     <div class="showoneimg" id="showoneimg" >
 <div>
@@ -958,6 +1152,20 @@ function theimg(theimg) {
 <img src="${photoarray[theimg]}" alt="">
 </div>
     `
+    document.getElementById("foot").innerHTML = `
+    
+    <button onclick="gotomainphotoapp()">
+        <span class="material-symbols-outlined">play_arrow</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">check_box_outline_blank</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">radio_button_unchecked</span>
+    </button>
+
+`
+
 }
 function gotomainphotoapp() {
     photo()
@@ -1016,6 +1224,58 @@ let videoarray = [
     {
         src: `video/black-clover_123.mp4`,
         name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
+    },
+    {
+        src: `video/black-clover_123.mp4`,
+        name: "black-clover_123.mp4"
     }
 
 
@@ -1024,6 +1284,7 @@ let videoarray = [
 function thevideo(thevideo) {
     console.log(thevideo);
     console.log(videoarray[thevideo]);
+    document.getElementById("videoapp").innerHTML = ""
     document.getElementById("videoapp").innerHTML += `
     <div class="showonevideo" id="showonevideo" >
 <div>
@@ -1042,6 +1303,19 @@ function thevideo(thevideo) {
 
 </div>
     `
+    document.getElementById("foot").innerHTML = `
+    
+    <button onclick="gotomainvideoapp()">
+        <span class="material-symbols-outlined">play_arrow</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">check_box_outline_blank</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">radio_button_unchecked</span>
+    </button>
+
+`
 }
 function gotomainvideoapp() {
     video()
@@ -1090,6 +1364,54 @@ function play_music() {
         {
             name: "Blame It On Me Official Music",
             src: `audio/Akon - Sorry, Blame It On Me Official Music Video.m4a`
+        },
+        {
+            name: "Clean Bandit, Demi Lovato",
+            src: `audio/Clean Bandit, Demi Lovato - Solo Lyrics.m4a`
+        },
+        {
+            name: "Ed_Sheeran_&_Travis_Scott_-_Antisocial",
+            src: `audio/Ed_Sheeran_&_Travis_Scott_-_Antisocial_[Official_Video](128k).m4a`
+        },
+        {
+            name: "Eminem - Godzilla ft Juice WRLD Directed by Cole Bennett",
+            src: `audio/Eminem - Godzilla ft Juice WRLD Directed by Cole Bennett (2).m4a`
+        },
+        {
+            name: "Forever__Justin_Bieber_Ft._Post_Malone__Clever1",
+            src: `audio/Forever__Justin_Bieber_Ft._Post_Malone__Clever1.m4a`
+        },
+        {
+            name: "Clean Bandit, Demi Lovato",
+            src: `audio/Clean Bandit, Demi Lovato - Solo Lyrics.m4a`
+        },
+        {
+            name: "Ed_Sheeran_&_Travis_Scott_-_Antisocial",
+            src: `audio/Ed_Sheeran_&_Travis_Scott_-_Antisocial_[Official_Video](128k).m4a`
+        },
+        {
+            name: "Eminem - Godzilla ft Juice WRLD Directed by Cole Bennett",
+            src: `audio/Eminem - Godzilla ft Juice WRLD Directed by Cole Bennett (2).m4a`
+        },
+        {
+            name: "Forever__Justin_Bieber_Ft._Post_Malone__Clever1",
+            src: `audio/Forever__Justin_Bieber_Ft._Post_Malone__Clever1.m4a`
+        },
+        {
+            name: "Clean Bandit, Demi Lovato",
+            src: `audio/Clean Bandit, Demi Lovato - Solo Lyrics.m4a`
+        },
+        {
+            name: "Ed_Sheeran_&_Travis_Scott_-_Antisocial",
+            src: `audio/Ed_Sheeran_&_Travis_Scott_-_Antisocial_[Official_Video](128k).m4a`
+        },
+        {
+            name: "Eminem - Godzilla ft Juice WRLD Directed by Cole Bennett",
+            src: `audio/Eminem - Godzilla ft Juice WRLD Directed by Cole Bennett (2).m4a`
+        },
+        {
+            name: "Forever__Justin_Bieber_Ft._Post_Malone__Clever1",
+            src: `audio/Forever__Justin_Bieber_Ft._Post_Malone__Clever1.m4a`
         },
         {
             name: "Clean Bandit, Demi Lovato",
@@ -1173,7 +1495,9 @@ play_circle
         audioPlayer.src = audioFiles[currentAudioIndex].src;
         audioPlayer.play();
         document.getElementById("showaudioname").innerHTML = audioFiles[currentAudioIndex].name
-        playBtn.textContent = 'Pause';
+        playBtn.innerHTML = `<span class="material-symbols-outlined">
+            pause_circle
+            </span>`
     });
 
     // Go to the next audio file when the next button is clicked
@@ -1185,7 +1509,9 @@ play_circle
         audioPlayer.src = audioFiles[currentAudioIndex].src;
         audioPlayer.play();
         document.getElementById("showaudioname").innerHTML = audioFiles[currentAudioIndex].name
-        playBtn.textContent = 'Pause';
+        playBtn.innerHTML = `<span class="material-symbols-outlined">
+            pause_circle
+            </span>`
     });
 
     // Update the range input as the audio plays
@@ -1234,7 +1560,9 @@ play_circle
         audioPlayer.src = audioFiles[currentAudioIndex].src;
         document.getElementById("showaudioname").innerHTML = audioFiles[currentAudioIndex].name
         audioPlayer.play();
-        playBtn.textContent = 'Pause';
+        playBtn.innerHTML = ` <span class="material-symbols-outlined">
+        pause_circle
+        </span>`;
     });
 
 
@@ -1495,3 +1823,657 @@ function addsubnewcontacttoarray() {
         }
     }
 }
+function message() {
+
+    document.getElementById("section1").innerHTML = ""
+    document.getElementById("section1").innerHTML = `
+    <section class="messageapp">
+        <div class="messageappheader" id="messageappheader">
+            message
+        </div>
+        <div class="messageappmain" id="messageappmain">
+
+        </div>
+        <button class="addtomessagebut" id="addtomessagebut" onclick="addtomessagebut()">
+            <span class="material-symbols-outlined">
+                add_box
+            </span>
+        </button>
+    </section>
+    `
+
+    for (let index = 0; index < messagearray.length; index++) {
+        const element = messagearray[index];
+        let me = messagearray[index].message.length - 1
+        document.getElementById("messageappmain").innerHTML += `
+        
+        <button class="onemessage" onclick="onemessage(${index})">
+        <img src="${messagearray[index].Image}" alt="">
+        <div>
+            <p>${messagearray[index].name}</p>
+            <p>${messagearray[index].message[me].content}</p>
+        </div>
+    </button>
+    
+        `
+
+
+    }
+    document.getElementById("foot").innerHTML = `
+    
+    <button onclick="home()">
+        <span class="material-symbols-outlined">play_arrow</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">check_box_outline_blank</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">radio_button_unchecked</span>
+    </button>
+
+`
+}
+
+let messagearray = [
+
+    {
+        Image: `images/facebook.png`,
+        name: "Usman SQI",
+        phonenumber: "08012345678",
+        message: [
+            {
+                from: "me",
+                content: "aova bro"
+            },
+            {
+                from: "someoneelse",
+                content: "i dey ooo"
+            },
+            {
+                from: "someoneelse",
+                content: "you dey go sqi today abi"
+            },
+            {
+                from: "me",
+                content: " yes na "
+            },
+        ]
+    },
+    {
+        Image: `images/facebook.png`,
+        name: "Mr dan",
+        phonenumber: "08012345678",
+        message: [
+            {
+                from: "me",
+                content: "hello"
+            },
+            {
+                from: "someoneelse",
+                content: "hi"
+            },
+            {
+                from: "someoneelse",
+                content: "what"
+            },
+            {
+                from: "me",
+                content: "am having bug in my code i need help "
+            },
+        ]
+    },
+]
+
+
+
+
+function onemessage(index) {
+    document.getElementById("messageappheader").innerHTML = `<button class="backtomessage" id="backtomessage" onclick="backtomessage()">
+    <span class="material-symbols-outlined">
+        arrow_back
+        </span>
+</button>`+ messagearray[index].name
+    document.getElementById("messageappmain").innerHTML = ""
+    document.getElementById("messageappmain").innerHTML = `
+        <div class="contectoftheindex" id="contectoftheindex">
+    </div>
+  `
+    document.getElementById("messageappmain").innerHTML += `
+        <div class="inputdivformessage">
+    <input type="text" id="inputformessage"> 
+    <button onclick="sendformessage(${index})">
+        <span class="material-symbols-outlined">
+            send
+            </span>
+    </button>
+  </div>
+  `
+    for (let i = 0; i < messagearray[index].message.length; i++) {
+        const element = messagearray[index].message[i];
+
+        if (element.from == "someoneelse") {
+            document.getElementById("contectoftheindex").innerHTML +=
+                `
+
+<aside class="messageforsomeoneels" id="messageforsomeoneels">
+${element.content}
+</aside>
+
+`
+        } else {
+            document.getElementById("contectoftheindex").innerHTML +=
+                `
+<aside class="messageforme" id="messageforme">
+${element.content}
+</aside>
+
+
+`
+        }
+    }
+    document.getElementById("addtomessagebut").style.display = "none"
+    document.getElementById("foot").innerHTML = `
+    
+    <button onclick="message()">
+        <span class="material-symbols-outlined">play_arrow</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">check_box_outline_blank</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">radio_button_unchecked</span>
+    </button>
+
+`
+}
+
+function sendformessage(index) {
+    console.log(messagearray[index].message);
+    if (document.getElementById("inputformessage").value == "") {
+
+    } else {
+        messagearray[index].message.push({
+            content: document.getElementById("inputformessage").value,
+            from: "me"
+        })
+        document.getElementById("inputformessage").value = ""
+        document.getElementById("contectoftheindex").innerHTML = ""
+        for (let i = 0; i < messagearray[index].message.length; i++) {
+            const element = messagearray[index].message[i];
+
+            if (element.from == "someoneelse") {
+                document.getElementById("contectoftheindex").innerHTML +=
+                    `
+
+<aside class="messageforsomeoneels" id="messageforsomeoneels">
+${element.content}
+</aside>
+
+`
+            } else {
+                document.getElementById("contectoftheindex").innerHTML +=
+                    `
+<aside class="messageforme" id="messageforme">
+${element.content}
+</aside>
+
+
+`
+            }
+        }
+
+    }
+
+}
+
+function backtomessage() {
+    message()
+}
+
+
+function addtomessagebut() {
+
+    document.getElementById("messageappheader").innerHTML = `<button class="backtomessage" id="backtomessage" onclick="backtomessage()">
+    <span class="material-symbols-outlined">
+        arrow_back
+        </span>
+</button>`+ "contacts"
+
+
+    document.getElementById("messageappmain").innerHTML = ""
+    for (let index = 0; index < contactarray.length; index++) {
+        const element = contactarray[index];
+
+        document.getElementById("messageappmain").innerHTML += `
+    
+    <button class="onemessage" onclick="addintomessage(${index})">
+    <img src="${contactarray[index].Image}" alt="">
+    <div>
+        <p>${contactarray[index].name}</p>
+        <p>${contactarray[index].phonenumber}</p>
+    </div>
+</button>
+
+    `
+
+
+    }
+
+    document.getElementById("addtomessagebut").style.display = "none"
+    document.getElementById("foot").innerHTML = `
+    
+    <button onclick="message()">
+        <span class="material-symbols-outlined">play_arrow</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">check_box_outline_blank</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">radio_button_unchecked</span>
+    </button>
+
+`
+}
+
+function addintomessage(index) {
+
+
+    console.log(contactarray[index]);
+
+    let found = messagearray.findIndex((current) => current.phonenumber == contactarray[index].phonenumber && current.name == contactarray[index].name);
+
+    console.log(found);
+
+
+
+    if (found >= 0) {
+
+
+
+        document.getElementById("messageappheader").innerHTML = `<button class="backtomessage" id="backtomessage" onclick="backtomessage()">
+                <span class="material-symbols-outlined">
+                    arrow_back
+                    </span>
+            </button>`+ messagearray[found].name
+        document.getElementById("messageappmain").innerHTML = ""
+        document.getElementById("messageappmain").innerHTML = `
+                    <div class="contectoftheindex" id="contectoftheindex">
+                </div>
+              `
+        document.getElementById("messageappmain").innerHTML += `
+                    <div class="inputdivformessage">
+                <input type="text" id="inputformessage"> 
+                <button onclick="sendformessage(${found})">
+                    <span class="material-symbols-outlined">
+                        send
+                        </span>
+                </button>
+              </div>
+              `
+        for (let i = 0; i < messagearray[found].message.length; i++) {
+            const element = messagearray[found].message[i];
+
+            if (element.from == "someoneelse") {
+                document.getElementById("contectoftheindex").innerHTML +=
+                    `
+
+        <aside class="messageforsomeoneels" id="messageforsomeoneels">
+            ${element.content}
+        </aside>
+
+        `
+            } else {
+                document.getElementById("contectoftheindex").innerHTML +=
+                    `
+        <aside class="messageforme" id="messageforme">
+        ${element.content}
+        </aside>
+
+
+        `
+            }
+        }
+        document.getElementById("addtomessagebut").style.display = "none"
+
+
+    }
+    else {
+        messagearray.push(
+            {
+                Image: contactarray[index].Image,
+                name: contactarray[index].name,
+                phonenumber: contactarray[index].phonenumber,
+                message: []
+            }
+        )
+        console.log(messagearray);
+        console.log(messagearray[2]);
+        document.getElementById("messageappheader").innerHTML = `<button class="backtomessage" id="backtomessage" onclick="backtomessage()">
+                <span class="material-symbols-outlined">
+                    arrow_back
+                    </span>
+            </button>`+ messagearray[messagearray.length - 1].name
+        document.getElementById("messageappmain").innerHTML = ""
+        document.getElementById("messageappmain").innerHTML = `
+                    <div class="contectoftheindex" id="contectoftheindex">
+                </div>
+              `
+        document.getElementById("messageappmain").innerHTML += `
+                    <div class="inputdivformessage">
+                <input type="text" id="inputformessage"> 
+                <button onclick="sendformessage(${messagearray.length - 1})">
+                    <span class="material-symbols-outlined">
+                        send
+                        </span>
+                </button>
+              </div>
+              `
+        for (let i = 0; i < messagearray[messagearray.length - 1].message.length; i++) {
+            const element = messagearray[messagearray.length - 1].message[i];
+
+            if (element.from == "someoneelse") {
+                document.getElementById("contectoftheindex").innerHTML +=
+                    `
+
+        <aside class="messageforsomeoneels" id="messageforsomeoneels">
+            ${element.content}
+        </aside>
+
+        `
+            } else {
+                document.getElementById("contectoftheindex").innerHTML +=
+                    `
+        <aside class="messageforme" id="messageforme">
+        ${element.content}
+        </aside>
+
+
+        `
+            }
+        }
+        document.getElementById("addtomessagebut").style.display = "none"
+
+    }
+
+
+    console.log(messagearray);
+
+
+
+}
+function addintomessagehis(index) {
+
+
+    console.log(historyarray[index]);
+
+    let found = messagearray.findIndex((current) => current.phonenumber == historyarray[index].phonenumber && current.name == historyarray[index].name);
+
+    console.log(found);
+
+
+
+    if (found >= 0) {
+
+
+
+        document.getElementById("messageappheader").innerHTML = `<button class="backtomessage" id="backtomessage" onclick="backtomessage()">
+                <span class="material-symbols-outlined">
+                    arrow_back
+                    </span>
+            </button>`+ messagearray[found].name
+        document.getElementById("messageappmain").innerHTML = ""
+        document.getElementById("messageappmain").innerHTML = `
+                    <div class="contectoftheindex" id="contectoftheindex">
+                </div>
+              `
+        document.getElementById("messageappmain").innerHTML += `
+                    <div class="inputdivformessage">
+                <input type="text" id="inputformessage"> 
+                <button onclick="sendformessage(${found})">
+                    <span class="material-symbols-outlined">
+                        send
+                        </span>
+                </button>
+              </div>
+              `
+        for (let i = 0; i < messagearray[found].message.length; i++) {
+            const element = messagearray[found].message[i];
+
+            if (element.from == "someoneelse") {
+                document.getElementById("contectoftheindex").innerHTML +=
+                    `
+
+        <aside class="messageforsomeoneels" id="messageforsomeoneels">
+            ${element.content}
+        </aside>
+
+        `
+            } else {
+                document.getElementById("contectoftheindex").innerHTML +=
+                    `
+        <aside class="messageforme" id="messageforme">
+        ${element.content}
+        </aside>
+
+
+        `
+            }
+        }
+        document.getElementById("addtomessagebut").style.display = "none"
+
+
+    }
+    else {
+        messagearray.push(
+            {
+                Image: historyarray[index].Image,
+                name: historyarray[index].name,
+                phonenumber: historyarray[index].phonenumber,
+                message: []
+            }
+        )
+
+        document.getElementById("messageappheader").innerHTML = `<button class="backtomessage" id="backtomessage" onclick="backtomessage()">
+                <span class="material-symbols-outlined">
+                    arrow_back
+                    </span>
+            </button>`+ messagearray[messagearray.length - 1].name
+        document.getElementById("messageappmain").innerHTML = ""
+        document.getElementById("messageappmain").innerHTML = `
+                    <div class="contectoftheindex" id="contectoftheindex">
+                </div>
+              `
+        document.getElementById("messageappmain").innerHTML += `
+                    <div class="inputdivformessage">
+                <input type="text" id="inputformessage"> 
+                <button onclick="sendformessage(${messagearray.length - 1})">
+                    <span class="material-symbols-outlined">
+                        send
+                        </span>
+                </button>
+              </div>
+              `
+        for (let i = 0; i < messagearray[messagearray.length - 1].message.length; i++) {
+            const element = messagearray[messagearray.length - 1].message[i];
+
+            if (element.from == "someoneelse") {
+                document.getElementById("contectoftheindex").innerHTML +=
+                    `
+
+        <aside class="messageforsomeoneels" id="messageforsomeoneels">
+            ${element.content}
+        </aside>
+
+        `
+            } else {
+                document.getElementById("contectoftheindex").innerHTML +=
+                    `
+        <aside class="messageforme" id="messageforme">
+        ${element.content}
+        </aside>
+
+
+        `
+            }
+        }
+        document.getElementById("addtomessagebut").style.display = "none"
+
+    }
+
+
+    console.log(messagearray);
+
+}
+
+// calendar
+
+
+
+ // Get the elements we need to interact with
+ const yearSelect = document.getElementById("year");
+ const prevButton = document.getElementById("prev");
+ const nextButton = document.getElementById("next");
+ const calendar = document.getElementById("calendarr");
+
+ // Set the default year to the current year
+ let year = new Date().getFullYear();
+
+ // Set the default month to the current month
+ let month = new Date().getMonth();
+
+
+function Calendar() {
+
+    document.getElementById("section1").innerHTML = ""
+    document.getElementById("section1").innerHTML = `
+    
+    <section class="calendarsection">
+    <h1>Calendar</h1>
+    <div id="calendarr" class="calendarr"></div>
+    <div id="controls">
+      <button id="prev"><span class="material-symbols-outlined">
+          skip_previous
+        </span></button>
+      <select id="year"></select>
+      <button id="next"><span class="material-symbols-outlined">
+          skip_next
+        </span></button>
+    </div>
+  </section> 
+    
+    `
+
+    
+    document.getElementById("foot").innerHTML = `
+    
+    <button onclick="home()">
+        <span class="material-symbols-outlined">play_arrow</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">check_box_outline_blank</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">radio_button_unchecked</span>
+    </button>
+
+`
+
+  // Get the elements we need to interact with
+  const yearSelect = document.getElementById("year");
+  const prevButton = document.getElementById("prev");
+  const nextButton = document.getElementById("next");
+  const calendar = document.getElementById("calendarr");
+
+  // Set the default year to the current year
+  let year = new Date().getFullYear();
+
+  // Set the default month to the current month
+  let month = new Date().getMonth();
+
+  // Populate the year select with options from the current year to 10 years in the future
+  for (let i = year; i <= year + 10; i++) {
+    yearSelect.innerHTML += `<option value="${i}">${i}</option>`;
+  }
+
+  // Render the initial calendar
+  renderCalendar();
+
+  // Add event listeners to the year select and navigation buttons
+  yearSelect.addEventListener("change", renderCalendar);
+  prevButton.addEventListener("click", () => {
+    month--;
+    if (month < 0) {
+      month = 11;
+      year--;
+    }
+    renderCalendar();
+  });
+  nextButton.addEventListener("click", () => {
+    month++;
+    if (month > 11) {
+      month = 0;
+      year++;
+    }
+    renderCalendar();
+  });
+
+  // Render the calendar based on the current year and month
+  function renderCalendar() {
+    // Get the number of days in the current month
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    // Create the calendar header
+    const header = document.createElement("h2");
+    header.textContent = `${year} - ${month + 1}`;
+    calendar.innerHTML = "";
+    calendar.appendChild(header);
+
+    // Create the calendar table
+    const table = document.createElement("table");
+
+    // Create the table header row
+    const headerRow = document.createElement("tr");
+    ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach((day) => {
+      const th = document.createElement("th");
+      th.textContent = day;
+      headerRow.appendChild(th);
+    });
+    table.appendChild(headerRow);
+
+    // Calculate the date of the first day of the month
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
+
+    // Create the table rows for the days
+    let row = document.createElement("tr");
+    for (let i = 0; i < firstDayOfMonth; i++) {
+      const td = document.createElement("td");
+      row.appendChild(td);
+    }
+    for (let i = 1; i <= daysInMonth; i++) {
+      const td = document.createElement("td");
+      td.textContent = i;
+      row.appendChild(td);
+      if (row.children.length === 7) {
+        table.appendChild(row);
+        row = document.createElement("tr");
+      }
+    }
+    if (row.children.length > 0) {
+      for (let i = row.children.length; i < 7; i++) {
+        const td = document.createElement("td");
+        row.appendChild(td);
+      }
+      table.appendChild(row);
+    }
+
+    calendar.appendChild(table);
+  }
+
+ 
+}
+
+ 
+ 
+
+   
+  

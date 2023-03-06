@@ -1,3 +1,7 @@
+* {
+    font-family: cursive;
+}
+
 main {
     background-image: url(images/wall\ 2.jpg);
     background-position: center;
@@ -169,7 +173,7 @@ main {
 .phoneapp {
     width: 100%;
     height: 100%;
-    background-color: blue;
+    background-color: rgb(102, 63, 245);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -193,7 +197,16 @@ main {
     width: 90%;
     padding: 5px;
     border-radius: 5px;
+    background-color: rgb(49, 43, 70);
+    outline: none;
+    border: none;
+    color: white;
+}
 
+.searchinphone::placeholder {
+
+
+    color: white;
 }
 
 .divforconandhisbut {
@@ -211,6 +224,8 @@ main {
     width: 45%;
     border: none;
     border-radius: 10px;
+    background-color: rgb(49, 43, 70);
+    color: white;
 
 }
 
@@ -223,7 +238,8 @@ main {
     z-index: -1;
     overflow: auto;
 }
-.displayhisandcontast::-webkit-scrollbar{
+
+.displayhisandcontast::-webkit-scrollbar {
     display: none;
 }
 
@@ -246,6 +262,8 @@ main {
     background-color: whitesmoke;
     width: 65%;
     font-size: 20px;
+    color: white;
+    background-color: rgb(102, 63, 245);
 }
 
 .showtypinginphonebutton {
@@ -254,7 +272,7 @@ main {
     margin: 10px;
     border-radius: 10px;
     border: none;
-    background-color: blue;
+    background-color: rgb(102, 63, 245);
     color: white;
     font-size: 20px;
 }
@@ -276,7 +294,7 @@ main {
     margin: 10px;
     border-radius: 10px;
     border: none;
-    background-color: blue;
+    background-color: rgb(102, 63, 245);
     color: white;
     font-size: 20px;
 }
@@ -296,7 +314,7 @@ main {
     margin: 10px;
     border-radius: 10px;
     border: none;
-    background-color: blue;
+    background-color: rgb(102, 63, 245);
     color: white;
     font-size: 20px;
 
@@ -318,7 +336,7 @@ main {
     margin: 10px;
     border-radius: 10px;
     border: none;
-    background-color: blue;
+    background-color: rgb(102, 63, 245);
     color: white;
     font-size: 20px;
 
@@ -477,6 +495,39 @@ main {
     color: blue;
     font-weight: bold;
 }
+
+.choosesim {
+    margin: auto;
+    width: 70%;
+    height: 200px;
+    background-color: rgb(102, 63, 245);
+    box-shadow: 2px 2px 10px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    left: 15%;
+    text-align: center;
+    text-align-last: center;
+    color: white;
+    font-weight: bold;
+}
+
+.choosesim button {
+    width: 90%;
+    height: 40%;
+    background-color: rgb(49, 43, 70);
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+}
+
+
+
 /* card gen app */
 
 .cardgenspace {
@@ -558,7 +609,7 @@ main {
     height: 100%;
     display: flex;
     flex-direction: column;
-    
+
     background-color: rgb(102, 63, 245);
 }
 
@@ -590,9 +641,10 @@ main {
     font-size: 20px;
     font-weight: bold;
     color: white;
-    
+
     background-color: rgba(49, 43, 70, 0.934);
 }
+
 /* photo app */
 .photoapp {
     width: 100%;
@@ -605,7 +657,8 @@ main {
 .photoapp::-webkit-scrollbar {
     display: none;
 }
-.nameappimg{
+
+.nameappimg {
     text-align: center;
     font-size: 20px;
     text-transform: uppercase;
@@ -617,6 +670,7 @@ main {
     align-items: center;
     height: 5%;
 }
+
 .photoapp button {
     width: 30%;
     margin: 5px;
@@ -624,6 +678,7 @@ main {
     border-radius: 5px;
     background-color: white;
 }
+
 .photoapp button:hover {
     width: 30%;
     margin: 5px;
@@ -637,7 +692,8 @@ main {
     height: fit-content;
 
 }
-.showoneimg{
+
+.showoneimg {
     width: 100%;
     height: 95%;
     background-color: rgb(102, 63, 245);
@@ -646,7 +702,8 @@ main {
     display: flex;
     flex-direction: column;
 }
-.showoneimg div{
+
+.showoneimg div {
     width: 100%;
     height: fit-content;
     display: flex;
@@ -654,7 +711,8 @@ main {
     align-items: center;
     background-color: rgb(255, 255, 255);
 }
-.showoneimg img{
+
+.showoneimg img {
     max-width: 95%;
     max-height: 70%;
     margin: auto;
@@ -673,7 +731,7 @@ main {
     display: none;
 }
 
-.nameappvideo{
+.nameappvideo {
     text-align: center;
     font-size: 20px;
     text-transform: uppercase;
@@ -685,12 +743,14 @@ main {
     align-items: center;
     height: 5%;
 }
+
 .videoapp button {
     width: 40%;
     margin: 18px;
     border: none;
     border-radius: 5px;
 }
+
 .videoapp button:hover {
     background-color: rgb(122, 122, 122);
 }
@@ -700,7 +760,8 @@ main {
     height: fit-content;
 
 }
-.showonevideo{
+
+.showonevideo {
     width: 100%;
     height: 95%;
     background-color: rgb(102, 63, 245);
@@ -709,14 +770,16 @@ main {
     display: flex;
     flex-direction: column;
 }
-.showonevideo div{
+
+.showonevideo div {
     width: 100%;
     height: fit-content;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
-.showonevideo video{
+
+.showonevideo video {
     max-width: 95%;
     max-height: 70%;
     margin: auto;
@@ -753,44 +816,58 @@ main {
     bottom: 0;
     background-color: rgb(102, 63, 245);
 }
-.audiocontrols div{
-   width: 100%;
-   display: flex;
-   justify-content: space-evenly;
-   align-items: center;
+
+.audiocontrols div {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
-.audiocontrols div button{
+
+.audiocontrols div button {
     width: 30%;
     height: 50px;
     border-radius: 10px;
     border: none;
     margin-bottom: 5px;
     margin-top: 5px;
-    
+
 }
-.audiocontrols input{
+
+.audiocontrols input {
     width: 80%;
 
-    
+
 }
-.audiobuttons-container{
+
+.audiobuttons-container {
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: 80%;
+    overflow: auto;
 }
-.audiobuttons-container button{
+
+.audiobuttons-container::-webkit-scrollbar {
+    display: none;
+}
+
+.audiobuttons-container button {
     width: 100%;
-    height: 50px;
+    height: 100px;
+    min-height: 70px;
     text-align: left;
     background-color: rgba(255, 255, 255, 0.306);
     color: white;
     font-weight: bold;
-    
+
 }
-.showaudioname{
-   color: white;
-   font-weight: bold; 
+
+.showaudioname {
+    color: white;
+    font-weight: bold;
 }
+
 /* contact app */
 .contactapp {
     height: 100%;
@@ -959,3 +1036,267 @@ main {
     color: white;
     background-color: rgb(49, 43, 70);
 }
+
+
+/* message app */
+
+.messageapp {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(49, 43, 70);
+    position: relative;
+}
+
+.messageappheader {
+    width: 100%;
+    height: 5%;
+    background-color: rgb(102, 63, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.messageappmain {
+    width: 100%;
+    height: 95%;
+    overflow: auto;
+}
+
+.messageappmain::-webkit-scrollbar {
+    width: 5px;
+    background-color: rgb(0, 0, 0);
+}
+
+.messageappmain::-webkit-scrollbar-thumb {
+    width: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+.addtomessagebut {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(102, 63, 245);
+    color: white;
+    border-radius: 50px;
+    border: none;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.addtomessagebut:hover {
+    background-color: rgb(49, 43, 70);
+    border: 2px solid rgb(102, 63, 245);
+    color: white;
+}
+
+.onemessage {
+    width: 100%;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.292);
+    border: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid black;
+    color: white;
+
+}
+
+.onemessage:hover {
+    width: 100%;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.621);
+    border: none;
+
+}
+
+.onemessage img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin: 5px;
+}
+
+.onemessage div {
+    text-align: left;
+    width: 70%;
+    height: fit-content;
+    border-radius: 50px;
+    margin: 5px;
+}
+
+.onemessage div p {
+    margin: 0;
+    overflow: hidden;
+    white-space: pre;
+    text-overflow: ellipsis;
+}
+
+.contectoftheindex {
+    width: 100%;
+    min-height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.messageforme {
+    max-width: 50%;
+    max-height: 400px;
+    background-color: rgba(0, 179, 255, 0.701);
+    color: white;
+    border-radius: 20px 20px 0 20px;
+    padding: 20px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+    align-self: flex-end;
+    overflow-wrap: break-word;
+
+}
+
+.messageforme::-webkit-scrollbar {
+    display: none;
+}
+
+.messageforsomeoneels {
+    max-width: 50%;
+    max-height: 400px;
+    background-color: rgb(102, 63, 245);
+    color: white;
+    border-radius: 20px 20px 20px 0;
+    padding: 20px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    overflow-wrap: break-word;
+
+}
+
+.messageforsomeoneels::-webkit-scrollbar {
+    display: none;
+}
+
+.inputdivformessage {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(102, 63, 245);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    bottom: 0;
+}
+
+.inputdivformessage input {
+    width: 80%;
+    padding: 5px;
+    font-size: 18px;
+    background-color: rgb(49, 43, 70);
+    border: none;
+    outline: none;
+    color: white;
+}
+
+.inputdivformessage button {
+    width: 12%;
+    background-color: rgb(102, 63, 245);
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.backtomessage {
+    border: none;
+    background-color: rgba(255, 222, 173, 0);
+    border-radius: 50px;
+    position: absolute;
+    left: 10px;
+}
+
+.backtomessage:hover {
+    background-color: rgba(255, 255, 255, 0.452);
+}
+
+/* calender */
+
+.calendarsection {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(102, 63, 245);
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  .calendarsection h1 {
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(49, 43, 70);
+  }
+
+  .calendarsection #calendarr {
+    padding: 10px;
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+  }
+
+  .calendarsection #controls {
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  .calendarsection button {
+    background-color: rgb(102, 63, 245);
+    border: 2px solid rgb(49, 43, 70);
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+  }
+
+  .calendarsection button:hover {
+    background-color: rgb(49, 43, 70);
+  }
+
+  .calendarsection select {
+    display: none;
+  }
+
+
+  .calendarsection table {
+    width: 100%;
+    height: 90%;
+  }
+
+  .calendarsection td {
+    background-color: white;
+    width: 14%;
+    height: 14%;
+    border: 2px solid rgb(49, 43, 70);
+    background-color: rgb(102, 63, 245);
+  }
+
+  .calendarsection tr td:nth-last-child(1) {
+    background-color: rgb(49, 43, 70);
+  }
+
+  .calendarsection tr td:nth-last-child(7) {
+    background-color: rgb(49, 43, 70);
+  }

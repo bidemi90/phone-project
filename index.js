@@ -2472,7 +2472,62 @@ function Calendar() {
  
 }
 
- 
+function camera() {
+    
+    document.getElementById("section1").innerHTML = ""
+    document.getElementById("section1").innerHTML = `
+    <section class="cameraapp">
+    <div class="cameraa" id="cameraaa">
+        <video src="" id="videooo" autoplay></video>
+    </div>
+    <div class="footerofcam">
+
+        <button class="footerofcambut" onclick="takepic()">
+            <span class="material-symbols-outlined">
+                camera
+            </span>
+        </button>
+
+        <canvas onclick="gotophotoapp()" class="footerofcamcan" id="canvasss">
+
+        </canvas>
+    </div>
+</section>
+    
+    `
+    document.getElementById("foot").innerHTML = `
+    
+    <button onclick="home()">
+        <span class="material-symbols-outlined">play_arrow</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">check_box_outline_blank</span>
+    </button>
+    <button>
+        <span class="material-symbols-outlined">radio_button_unchecked</span>
+    </button>
+
+`
+let canvasss = document.getElementById("canvasss")
+let canscreennn = document.getElementById("cameraaa")
+let videooo = document.getElementById("videooo")
+async function startcam() {
+    let strem = await navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+    videooo.srcObject = strem;
+}startcam()
+
+
+} 
+function takepic() {
+    canvasss.getContext("2d").drawImage(videooo, 0, 0, canvasss.width, canvasss.height)
+    let theimgurl = canvasss.toDataURL("image/png")
+    console.log(theimgurl);
+    photoarray.push(theimgurl)
+}
+function gotophotoapp() {
+    console.log("me");
+    photo()
+}
  
 
    

@@ -2,6 +2,18 @@
     font-family: cursive;
 }
 
+:root {
+    /* --bgcolor: rgb(16, 25, 32); */
+    /* --textcolor: rgb(255, 231, 21); */
+
+    --bgcolor: rgb(49, 120, 116);
+    --textcolor: rgb(226, 210, 249);
+    /* --bgcolor: rgb(153, 0, 18);
+            --textcolor: rgb(252, 246, 246); */
+    /* --bgcolor: rgb(35, 78, 112);
+            --textcolor: rgb(250, 248, 191); */
+}
+
 main {
     background-image: url(images/wall\ 2.jpg);
     background-position: center;
@@ -24,7 +36,7 @@ main {
     color: white;
     font-size: 10px;
     font-family: cursive;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--bgcolor);
 }
 
 .nav * {
@@ -113,12 +125,7 @@ main {
     background-size: cover;
 }
 
-.camera {
-    background-image: url(images/icons8-prequel-app-240.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+
 
 .section2 {
     height: fit-content;
@@ -166,14 +173,13 @@ main {
     height: 60%;
     position: absolute;
     bottom: 0;
-    background-color: white;
     border-top: 1px solid black;
 }
 
 .phoneapp {
     width: 100%;
     height: 100%;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--bgcolor);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -197,16 +203,14 @@ main {
     width: 90%;
     padding: 5px;
     border-radius: 5px;
-    background-color: rgb(49, 43, 70);
+    background-color: var(--textcolor);
     outline: none;
     border: none;
-    color: white;
+    color: var(--bgcolor);
 }
 
 .searchinphone::placeholder {
-
-
-    color: white;
+    color: var(--bgcolor);
 }
 
 .divforconandhisbut {
@@ -224,8 +228,8 @@ main {
     width: 45%;
     border: none;
     border-radius: 10px;
-    background-color: rgb(49, 43, 70);
-    color: white;
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
 
 }
 
@@ -234,7 +238,7 @@ main {
     width: 100%;
     position: absolute;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.515);
+    background-color: rgba(255, 255, 255, 0);
     z-index: -1;
     overflow: auto;
 }
@@ -249,7 +253,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--textcolor);
 }
 
 .showtypinginphoneinput {
@@ -259,11 +263,11 @@ main {
     border-radius: 10px;
     border: none;
     height: 30px;
-    background-color: whitesmoke;
+   
     width: 65%;
     font-size: 20px;
-    color: white;
-    background-color: rgb(102, 63, 245);
+    color: var(--textcolor);
+    background-color: var(--bgcolor);
 }
 
 .showtypinginphonebutton {
@@ -272,8 +276,8 @@ main {
     margin: 10px;
     border-radius: 10px;
     border: none;
-    background-color: rgb(102, 63, 245);
-    color: white;
+    color: var(--textcolor);
+    background-color: var(--bgcolor);
     font-size: 20px;
 }
 
@@ -283,7 +287,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background-color: white;
+    background-color: var(--textcolor);
 
 
 }
@@ -294,8 +298,8 @@ main {
     margin: 10px;
     border-radius: 10px;
     border: none;
-    background-color: rgb(102, 63, 245);
-    color: white;
+    color: var(--textcolor);
+    background-color: var(--bgcolor);
     font-size: 20px;
 }
 
@@ -304,7 +308,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--textcolor);
 
 }
 
@@ -314,8 +318,8 @@ main {
     margin: 10px;
     border-radius: 10px;
     border: none;
-    background-color: rgb(102, 63, 245);
-    color: white;
+    color: var(--textcolor);
+    background-color: var(--bgcolor);
     font-size: 20px;
 
 }
@@ -325,7 +329,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--textcolor);
     display: none;
 
 }
@@ -336,8 +340,8 @@ main {
     margin: 10px;
     border-radius: 10px;
     border: none;
-    background-color: rgb(102, 63, 245);
-    color: white;
+    color: var(--textcolor);
+    background-color: var(--bgcolor);
     font-size: 20px;
 
 }
@@ -364,7 +368,7 @@ main {
 .onecontactorhistory div p {
     margin: 0;
     margin-bottom: 5px;
-    color: white;
+    color: var(--textcolor);
     font-weight: bold;
 }
 
@@ -374,7 +378,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: var(--textcolor);
     border-radius: 10px;
     position: absolute;
     top: 100px;
@@ -408,7 +412,7 @@ main {
     margin: 0;
     margin-bottom: 5px;
     margin-left: 5px;
-    color: black;
+    color: var(--bgcolor);
 }
 
 .whattodowithonecotact div button {
@@ -416,6 +420,8 @@ main {
     height: 50%;
     border: none;
     border-radius: 10px;
+    color: var(--textcolor);
+    background-color: var(--bgcolor);
 
 }
 
@@ -426,7 +432,7 @@ main {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: blue;
+    background-color: var(--bgcolor);
     position: absolute;
     top: 0;
 }
@@ -441,7 +447,8 @@ main {
     width: 90%;
     height: fit-content;
     padding: 5px;
-    background-color: white;
+    color: var(--bgcolor);
+    background-color: var(--textcolor);
     padding: 5px;
     text-align: center;
     border-radius: 10px;
@@ -455,7 +462,7 @@ main {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: white;
+    background-color: var(--textcolor);
     border-radius: 10px;
 }
 
@@ -470,8 +477,8 @@ main {
     height: 50px;
     border: none;
     border-radius: 10px;
-    background-color: blue;
-    color: white;
+    color: var(--textcolor);
+    background-color: var(--bgcolor);
     font-weight: bold;
 }
 
@@ -491,8 +498,8 @@ main {
     height: 50px;
     border: none;
     border-radius: 10px;
-    background-color: rgb(255, 255, 255);
-    color: blue;
+    color: var(--bgcolor);
+    background-color: var(--textcolor);
     font-weight: bold;
 }
 
@@ -533,12 +540,13 @@ main {
 .cardgenspace {
     width: 100%;
     height: 100%;
-    background-color: white;
+    background-color: var(--bgcolor);
+    color: var(--textcolor);
 }
 
 .cardgenspacebutton {
     width: 100%;
-    height: 5%;
+    height: 10%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -547,14 +555,17 @@ main {
 .cardgenspacebutton button {
     width: 20%;
     padding: 7px;
+    
     border-radius: 5px;
     border: 1px solid black;
-    background-color: rgb(105, 105, 105);
-    color: white;
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
+    overflow: hidden;
 }
 
 .cardgenspacebutton button:hover {
-    background-color: black;
+    background-color: var(--bgcolor);
+    color: var(--textcolor);
 }
 
 .spacefortheselection {
@@ -571,23 +582,23 @@ main {
     border-radius: 5px;
 }
 
-.spacefortheselection input {
-    width: 15%;
+.spacefortheselection input, .spacefortheselection button,.spacefortheselection select{
+    width: 25%;
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid var(--textcolor);
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
     border-radius: 5px;
 }
 
 .spacefortheselection button {
     width: 20%;
     padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
 }
 
 .showfornetwork {
     width: 100%;
-    height: 85%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -597,10 +608,17 @@ main {
 .showfornetwork p {
     margin: 10px;
     font-size: 20px;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 
+}
+.showfornetwork p button {
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
+    border-radius: 5px;
+    border: none;
 }
 
 /* cal app */
@@ -610,13 +628,13 @@ main {
     display: flex;
     flex-direction: column;
 
-    background-color: rgb(102, 63, 245);
+    background-color: var(--bgcolor);
 }
 
 .outputcal {
     width: 100%;
     height: 20%;
-    background-color: rgb(250, 250, 250);
+    background-color: var(--textcolor);
     font-size: 20px;
     font-weight: bold;
     display: flex;
@@ -627,7 +645,7 @@ main {
 .rowcal {
     width: 100%;
     height: 20%;
-    background-color: rgba(255, 255, 255, 0.345);
+    background-color: var(--bgcolor);
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -640,16 +658,16 @@ main {
     border: none;
     font-size: 20px;
     font-weight: bold;
-    color: white;
+    color: var(--bgcolor);
 
-    background-color: rgba(49, 43, 70, 0.934);
+    background-color: var(--textcolor);
 }
 
 /* photo app */
 .photoapp {
     width: 100%;
     height: 100%;
-    background-color: rgb(49, 43, 70);
+    background-color: var(--bgcolor);
     overflow: auto;
     position: relative;
 }
@@ -663,7 +681,7 @@ main {
     font-size: 20px;
     text-transform: uppercase;
     color: white;
-    background-color: rgb(49, 43, 70);
+    background-color: var(--bgcolor);
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -676,7 +694,7 @@ main {
     margin: 5px;
     border: none;
     border-radius: 5px;
-    background-color: white;
+    background-color: var(--textcolor);
 }
 
 .photoapp button:hover {
@@ -696,7 +714,7 @@ main {
 .showoneimg {
     width: 100%;
     height: 95%;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--bgcolor);
     position: absolute;
     bottom: 0;
     display: flex;
@@ -709,7 +727,7 @@ main {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--bgcolor);
 }
 
 .showoneimg img {
@@ -724,7 +742,7 @@ main {
     height: 100%;
     overflow: auto;
     position: relative;
-    background-color: rgb(49, 43, 70);
+    background-color: var(--bgcolor);
 }
 
 .videoapp::-webkit-scrollbar {
@@ -735,8 +753,8 @@ main {
     text-align: center;
     font-size: 20px;
     text-transform: uppercase;
-    color: white;
-    background-color: rgb(49, 43, 70);
+    color: var(--bgcolor);
+    background-color: var(--textcolor);
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -764,7 +782,7 @@ main {
 .showonevideo {
     width: 100%;
     height: 95%;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--bgcolor);
     position: absolute;
     bottom: 0;
     display: flex;
@@ -777,6 +795,10 @@ main {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+.showonevideo div button{
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
 }
 
 .showonevideo video {
@@ -791,19 +813,19 @@ main {
 .audioapp {
     width: 100%;
     height: 100%;
-    background-color: rgb(49, 43, 70);
+    background-color: var(--bgcolor);
     position: relative;
 }
 
 .audioappname {
     width: 100%;
     height: 5%;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--textcolor);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    color: white;
+    color: var(--bgcolor);
 }
 
 .audiocontrols {
@@ -814,7 +836,8 @@ main {
     align-items: center;
     position: absolute;
     bottom: 0;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
 }
 
 .audiocontrols div {
@@ -831,6 +854,8 @@ main {
     border: none;
     margin-bottom: 5px;
     margin-top: 5px;
+    background-color: var(--bgcolor);
+    color: var(--textcolor);
 
 }
 
@@ -857,14 +882,14 @@ main {
     height: 100px;
     min-height: 70px;
     text-align: left;
-    background-color: rgba(255, 255, 255, 0.306);
-    color: white;
+    background-color: var(--bgcolor);
+    color: var(--textcolor);
     font-weight: bold;
 
 }
 
 .showaudioname {
-    color: white;
+    color: var(--bgcolor);
     font-weight: bold;
 }
 
@@ -876,14 +901,14 @@ main {
 }
 
 .nameappcotact {
-    background-color: rgb(49, 43, 70);
+    background-color: var(--textcolor);
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--bgcolor);
     text-transform: uppercase;
     height: 5%;
 
@@ -891,7 +916,7 @@ main {
 
 .allcontacts {
     height: 95%;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--bgcolor);
 }
 
 .onecotactincotactapp {
@@ -916,7 +941,7 @@ main {
 .onecotactincotactapp div {
     width: 70%;
     height: fit-content;
-    color: white;
+    color: var(--textcolor);
 }
 
 .addtocontactdiv {
@@ -933,8 +958,8 @@ main {
     width: 50px;
     padding: 10px;
     border-radius: 50px;
-    color: white;
-    background-color: rgb(49, 43, 70);
+    color: var(--bgcolor);
+    background-color: var(--textcolor);
     border: none;
 }
 
@@ -942,16 +967,16 @@ main {
     width: 50px;
     padding: 10px;
     border-radius: 50px;
-    color: rgb(49, 43, 70);
-    background-color: rgb(102, 63, 245);
+    color: var(--textcolor);
+    background-color: var(--bgcolor);
     border: none;
-    border: 2px solid rgb(49, 43, 70);
+    border: 2px solid var(--textcolor);
 }
 
 .divtoeditonecotact {
     width: 100%;
     height: 100%;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--textcolor);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -962,11 +987,11 @@ main {
 .headerofoneeditincontact {
     position: absolute;
     top: 0;
-    background-color: rgb(49, 43, 70);
+    background-color: var(--bgcolor);
     width: 100%;
     height: 40px;
     font-size: 20px;
-    color: white;
+    color: var(--textcolor);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -995,9 +1020,9 @@ main {
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
-    background-color: rgb(49, 43, 70);
+    background-color: var(--bgcolor);
+    color: var(--textcolor);
     margin: 20px;
-    color: white;
     border-radius: 10px;
     font-weight: bold;
 
@@ -1016,8 +1041,8 @@ main {
     outline: none;
     border: none;
     margin: 10px;
-    background-color: rgb(49, 43, 70);
-    color: white;
+    background-color: var(--bgcolor);
+    color: var(--textcolor);
 }
 
 .butdivincontactedit {
@@ -1033,8 +1058,8 @@ main {
     border-radius: 10px;
     padding: 10px;
     font-size: 20px;
-    color: white;
-    background-color: rgb(49, 43, 70);
+    background-color: var(--bgcolor);
+    color: var(--textcolor);
 }
 
 
@@ -1043,18 +1068,18 @@ main {
 .messageapp {
     width: 100%;
     height: 100%;
-    background-color: rgb(49, 43, 70);
+    background-color: var(--bgcolor);
     position: relative;
 }
 
 .messageappheader {
     width: 100%;
     height: 5%;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--textcolor);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--bgcolor);
     font-weight: bold;
     font-size: 20px;
     position: relative;
@@ -1080,8 +1105,8 @@ main {
 .addtomessagebut {
     width: 50px;
     height: 50px;
-    background-color: rgb(102, 63, 245);
-    color: white;
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
     border-radius: 50px;
     border: none;
     position: absolute;
@@ -1091,8 +1116,8 @@ main {
 
 .addtomessagebut:hover {
     background-color: rgb(49, 43, 70);
-    border: 2px solid rgb(102, 63, 245);
-    color: white;
+    border: 2px solid var(--textcolor);
+    color: var(--textcolor);
 }
 
 .onemessage {
@@ -1167,8 +1192,8 @@ main {
 .messageforsomeoneels {
     max-width: 50%;
     max-height: 400px;
-    background-color: rgb(102, 63, 245);
-    color: white;
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
     border-radius: 20px 20px 20px 0;
     padding: 20px;
     overflow-y: scroll;
@@ -1188,7 +1213,7 @@ main {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--textcolor);
     padding-top: 5px;
     padding-bottom: 5px;
     position: absolute;
@@ -1199,18 +1224,18 @@ main {
     width: 80%;
     padding: 5px;
     font-size: 18px;
-    background-color: rgb(49, 43, 70);
+    background-color:var(--bgcolor);
     border: none;
     outline: none;
-    color: white;
+    color: var(--textcolor);
 }
 
 .inputdivformessage button {
     width: 12%;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--bgcolor);
     border: none;
     border-radius: 5px;
-    color: white;
+    color: var(--textcolor);
 }
 
 .backtomessage {
@@ -1230,23 +1255,22 @@ main {
 .calendarsection {
     width: 100%;
     height: 100%;
-    background-color: rgb(102, 63, 245);
+    background-color: var(--bgcolor);
     color: white;
     font-weight: bold;
     font-size: 20px;
-  }
+}
 
-  body {
-    font-family: Arial, sans-serif;
-  }
 
-  .calendarsection h1 {
+
+.calendarsection h1 {
     text-align: center;
     padding: 10px;
-    background-color: rgb(49, 43, 70);
-  }
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
+}
 
-  .calendarsection #calendarr {
+.calendarsection #calendarr {
     padding: 10px;
     margin: 0 auto;
     width: 300px;
@@ -1255,55 +1279,57 @@ main {
     display: flex;
     flex-direction: column;
     height: 70%;
-  }
+}
 
-  .calendarsection #controls {
+.calendarsection #controls {
     margin: 20px auto;
     text-align: center;
-  }
+}
 
-  .calendarsection button {
-    background-color: rgb(102, 63, 245);
-    border: 2px solid rgb(49, 43, 70);
-    color: white;
+.calendarsection button {
+    background-color: var(--textcolor);
+    border: none;
+    color: var(--bgcolor);
     padding: 10px 20px;
     margin: 5px;
     cursor: pointer;
-  }
+}
 
-  .calendarsection button:hover {
-    background-color: rgb(49, 43, 70);
-  }
+.calendarsection button:hover {
+    background-color: var(--bgcolor);
+    color: var(--textcolor);
+}
 
-  .calendarsection select {
+.calendarsection select {
     display: none;
-  }
+}
 
 
-  .calendarsection table {
+.calendarsection table {
     width: 100%;
     height: 90%;
-  }
+}
 
-  .calendarsection td {
+.calendarsection td {
     background-color: white;
     width: 14%;
     height: 14%;
-    border: 2px solid rgb(49, 43, 70);
-    background-color: rgb(102, 63, 245);
-  }
+    border: 2px solid var(--textcolor);
+    color: var(--textcolor);
+    background-color: var(--bgcolor);
+}
 
-  .calendarsection tr td:nth-last-child(1) {
-    background-color: rgb(49, 43, 70);
-  }
+.calendarsection tr td:nth-last-child(1),
+.calendarsection tr td:nth-last-child(7) {
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
 
-  .calendarsection tr td:nth-last-child(7) {
-    background-color: rgb(49, 43, 70);
-  }
+}
 
-  /* camera */
 
-  .cameraapp {
+/* camera */
+
+.cameraapp {
     width: 100%;
     height: 100%;
 
@@ -1312,7 +1338,7 @@ main {
 .cameraa {
     width: 100%;
     height: 90%;
-    background-color: rgb(49, 43, 70);
+    background-color:var(--bgcolor);
 }
 
 .cameraa video {
@@ -1323,7 +1349,7 @@ main {
 .footerofcam {
     width: 100%;
     height: 10%;
-    background-color: rgb(102, 63, 245);
+    background-color:var(--textcolor);
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -1334,9 +1360,9 @@ main {
     width: 70px;
     height: 70px;
 
-    background-color: rgb(49, 43, 70);
+    background-color:var(--bgcolor);
     margin: 0;
-    color: white;
+    color: var(--textcolor);
     border-radius: 5px;
 }
 
